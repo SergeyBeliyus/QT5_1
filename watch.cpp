@@ -4,9 +4,9 @@ Stopwatch::Stopwatch(QObject *parent)
     : QObject{parent}
 {
     isStart_ = false;
-    currentTime_ = 0.;
+    currTime_ = 0.;
     startTime_ = 0.;
-    currentLap_ = 1;
+    currLap_ = 1;
     qTimer = new QTimer(this);
 }
 
@@ -14,42 +14,42 @@ void Stopwatch::TimerStart()
 {
     isStart_ = true;
     qTimer->start(100);
-    emit sig_Start();
+    emit Start();
 }
 
 void Stopwatch::TimerStop()
 {
     isStart_ = false;
     qTimer->stop();
-    emit sig_Stop();
+    emit Stop();
 }
 
 void Stopwatch::TimerClear()
 {
-    currentTime_ = 0.;
+    currTime_ = 0.;
     startTime_ = 0.;
-    currentLap_ = 1;
-    emit sig_Clear();
+    currLap_ = 1;
+    emit Clear();
 }
 
 void Stopwatch::TimerLap()
 {
-    emit sig_Lap();
+    emit Lap();
 }
 
 void Stopwatch::setTime(float time)
 {
-    currentTime_ = time;
+    currTime_ = time;
 }
 
 void Stopwatch::setLap(int lap)
 {
-    currentLap_ = lap;
+    currLap_ = lap;
 }
 
 float Stopwatch::getCurrentTime()
 {
-    return currentTime_;
+    return currTime_;
 }
 
 float Stopwatch::getStartTime()
@@ -59,8 +59,8 @@ float Stopwatch::getStartTime()
 
 int Stopwatch::getCurrentLap()
 {
-    startTime_ = currentTime_;
-    return currentLap_;
+    startTime_ = currTime_;
+    return currLap_;
 }
 
 bool Stopwatch::isStart()

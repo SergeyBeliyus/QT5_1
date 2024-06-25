@@ -17,10 +17,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lbl_time->setText(QString::number(sw->getCurrentTime()) + " сек");
     ui->btn_lap->setEnabled(sw->isStart());
 
-    connect(sw, &Stopwatch::sig_Start, this, &MainWindow::RcvSignalStart);
-    connect(sw, &Stopwatch::sig_Stop, this, &MainWindow::RcvSignalStop);
-    connect(sw, &Stopwatch::sig_Clear, this, &MainWindow::RcvSignalClear);
-    connect(sw, &Stopwatch::sig_Lap, this, &MainWindow::RcvSignalLap);
+    connect(sw, &Stopwatch::Start, this, &MainWindow::RcvSignalStart);
+    connect(sw, &Stopwatch::Stop, this, &MainWindow::RcvSignalStop);
+    connect(sw, &Stopwatch::Clear, this, &MainWindow::RcvSignalClear);
+    connect(sw, &Stopwatch::Lap, this, &MainWindow::RcvSignalLap);
     connect(sw->getQTimer(), &QTimer::timeout, this, &MainWindow::RcvSignalShowTime);
 
 }

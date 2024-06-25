@@ -22,18 +22,19 @@ public:
     bool isStart();
     QTimer* getQTimer();
 
-signals:
-    void sig_Start();
-    void sig_Stop();
-    void sig_Clear();
-    void sig_Lap();
-
 private:
     bool isStart_;
-    float currentTime_;
+    float currTime_;
     float startTime_;
-    int currentLap_;
+    int currLap_;
     QTimer* qTimer;
+
+signals:
+    void Start();
+    void Stop();
+    void Clear();
+    void Lap();
+
 };
 
 #endif
